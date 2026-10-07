@@ -1,210 +1,184 @@
 # E-commerce Customer & Shipping Performance Analysis
 
-## 📊 Project Overview
+## Project Overview
 
-This project analyses e-commerce customer, order, seller and shipping data to identify purchasing patterns and evaluate delivery performance.
+This project analyses e-commerce customer, order, seller, product and shipping data to understand revenue performance, order status, delivery performance and shipping-related patterns.
 
-The analysis was conducted using the Olist e-commerce dataset and followed an end-to-end data analytics workflow:
+The project follows an end-to-end data analytics workflow:
 
-**Data Cleaning → Data Transformation → Data Modelling → Analysis → Visualisation → Insights → Recommendations**
+**Data Cleaning → Data Transformation → Data Modelling → DAX Analysis → Visualisation → Insights → Recommendations**
 
----
+## Business Problem
 
-## 🎯 Business Problem
+E-commerce businesses need reliable information about sales and delivery performance to monitor operations, understand customer demand and identify areas for improvement.
 
-E-commerce businesses need reliable information about customer orders and delivery performance to understand customer behaviour, monitor operational performance and identify areas for improvement.
+This project uses the Olist Brazilian e-commerce dataset to analyse customer orders and shipping performance and communicate the results through an interactive Power BI dashboard.
 
-This project uses historical e-commerce data to analyse customer orders and shipping performance and communicate the findings through an interactive Power BI dashboard.
+## Project Objectives
 
----
+The dashboard was designed to answer questions such as:
 
-## 🎯 Project Objectives
+- Which customer states generate the most revenue?
+- What is the distribution of orders by status?
+- How does freight value relate to product/order value?
+- Which product categories generate the most revenue?
+- How does revenue change over the months?
+- Which sellers generate the highest revenue?
+- What are the key delivery and freight KPIs?
 
-The analysis aimed to:
+## Dataset
 
-* Analyse customer ordering and purchasing patterns.
-* Evaluate order and delivery performance.
-* Examine delivery times and shipping-related patterns.
-* Identify variations in performance across sellers and other relevant categories.
-* Develop key performance indicators for monitoring e-commerce performance.
-* Present findings through an interactive Power BI dashboard.
-* Provide data-driven insights and recommendations.
+The project uses the real Olist Brazilian e-commerce dataset, which contains multiple related tables covering areas such as customers, orders, products, sellers, payments, reviews and delivery dates.
 
----
+The source tables were prepared and combined for analysis using Power Query before being loaded into Power BI.
 
-## 📁 Dataset
+## Data Cleaning & Preparation
 
-The project uses the real Olist Brazilian e-commerce dataset.
+Key preparation activities included:
 
-The dataset contains information relating to areas such as:
+- Reviewing source tables and column structures
+- Checking and correcting data types
+- Reviewing missing values, particularly delivery-date fields
+- Standardising relevant fields
+- Merging related tables
+- Creating delivery-related analytical fields
+- Validating the resulting analytical table
+- Preparing the model for Power BI
 
-* Customers
-* Orders
-* Products
-* Sellers
-* Payments
-* Reviews
-* Order delivery dates
-* Product categories
-* Geographic information
+## Power BI Data Model
 
-The original data was distributed across multiple related tables, which were cleaned and combined during the data preparation stage.
+The report uses an analytical model containing entities including:
 
----
+- Orders
+- Products
+- Sellers
+- Customers / customer-state information
+- Date dimension
 
-## 🧹 Data Cleaning & Preparation
+The model supports analysis across customer location, order status, product category, seller and time.
 
-The raw data was prepared using Excel and Power Query.
+## Key KPIs
 
-Key data preparation activities included:
+The final dashboard displays:
 
-* Reviewing the structure and quality of the source tables.
-* Identifying missing values.
-* Checking and correcting data types.
-* Cleaning and standardising fields.
-* Reviewing date and datetime columns.
-* Merging related datasets.
-* Creating the required analytical fields.
-* Checking the resulting dataset for consistency.
-* Preparing the final dataset for Power BI analysis.
+| KPI | Dashboard Value |
+|---|---:|
+| Total Revenue | R$ 13.59M |
+| Total Orders | 99K |
+| Average Delivery Days | 12 |
+| Average Freight | R$ 20 |
 
-Special attention was given to delivery-date fields because some orders did not contain completed delivery dates.
+*Values above are the rounded values displayed on the final dashboard.*
 
----
+## Dashboard
 
-## 🔄 Data Transformation
+![Olist E-commerce Dashboard](Dashboard/final-dashboard.jpg)
 
-Power Query was used to transform and combine the source tables into a dataset suitable for analysis.
+The dashboard includes:
 
-The transformation process included:
+- Revenue by State
+- Orders by Status
+- Freight Cost vs Order/Product Value
+- Top 10 Product Categories by Revenue
+- Monthly Revenue Trend
+- Top 10 Sellers by Revenue
+- Order Status slicer
+- Customer State slicer
+- Product Category slicer
 
-1. Importing the source tables.
-2. Reviewing column names and data types.
-3. Cleaning relevant fields.
-4. Handling missing values appropriately.
-5. Merging related tables.
-6. Creating delivery-related calculations.
-7. Reviewing the merged dataset.
-8. Loading the cleaned data into the analytical model.
+## Key Findings
 
----
+### 1. Revenue is highly concentrated in São Paulo
 
-## 🧩 Data Modelling
+São Paulo generated approximately **R$5.2M**, making it the strongest revenue-generating state shown in the dashboard. This represents roughly **38% of the R$13.59M total revenue** displayed.
 
-The cleaned data was loaded into Power BI and structured into an analytical model.
+### 2. Most orders were delivered
 
-Relationships between relevant entities were established to allow customer, order, seller, product and shipping information to be analysed together.
+The order-status visual shows **97.78% of orders as delivered**, while **1.05% were shipped**. The remaining orders were distributed across cancelled, created and unavailable statuses.
 
----
+This indicates that completed deliveries represent the overwhelming majority of orders in the analysed data.
 
-## 📐 DAX Measures
+### 3. May recorded the highest monthly revenue
 
-DAX was used to create analytical measures and KPIs required for the dashboard.
+The monthly revenue trend shows May at approximately **R$1.5M**, the highest monthly value displayed. September was among the lowest points at approximately **R$0.6M**.
 
-Examples of measures included calculations for:
+### 4. Beauty & Health was the leading product category
 
-* Total Orders
-* Total Customers
-* Total Sellers
-* Delivery Performance
-* Average Delivery Time
-* Other project-specific KPIs
+The `beleza_saude` category generated approximately **R$1.26M**, followed by `relogios_presentes` at approximately **R$1.21M**.
 
-The measures were designed to support interactive filtering and analysis within the dashboard.
+### 5. Seller revenue is concentrated among the top sellers
 
----
+The Top 10 Sellers visual shows a relatively small group of sellers generating the highest individual seller revenues, with the leading seller contributing approximately **R$229K**.
 
-## 📊 Dashboard
+### 6. Freight and product value show strong clustering at lower values
 
-The final Power BI dashboard provides an interactive view of the key findings from the analysis.
+The scatter plot shows that most observations are concentrated at lower product/order values and lower freight values. The visual does not suggest a simple, strong linear relationship across the entire dataset; further statistical analysis would be required to quantify the relationship.
 
-### Dashboard Preview
+## Recommendations
 
-![Olist E-commerce Dashboard](Dashboard/final-dashboard.png)
+Based on the dashboard findings:
 
-The dashboard enables users to explore the data using visualisations, KPIs and filters.
+1. **Monitor state-level performance**  
+   Continue tracking revenue by state and investigate the factors contributing to São Paulo's strong performance.
 
-### Key Dashboard Areas
+2. **Track delivery KPIs regularly**  
+   Use average delivery days and order-status distribution as operational KPIs.
 
-* Order performance
-* Customer analysis
-* Shipping and delivery performance
-* Seller performance
-* Trends over time
+3. **Investigate low-revenue periods**  
+   Examine the causes of weaker months, particularly the sharp decline visible around September.
 
----
+4. **Support high-performing categories**  
+   Monitor inventory, marketing and customer demand for leading categories such as Beauty & Health and Watches & Gifts.
 
-## 🔎 Key Insights
+5. **Monitor seller performance**  
+   Track high-performing sellers and investigate whether delivery performance, product mix or order volume contributes to their results.
 
-The analysis identified patterns in customer orders, seller activity and delivery performance.
+6. **Review freight efficiency**  
+   Analyse freight cost relative to order/product value to identify potentially inefficient shipping patterns.
 
-The dashboard was used to identify areas where delivery performance varied and to examine patterns across different categories and periods.
+## Tools Used
 
-The specific findings and numerical values are presented in the final dashboard and supporting analysis.
+- **Microsoft Excel** — initial data handling and analysis
+- **Power Query** — data cleaning and transformation
+- **Power BI** — modelling, visualisation and dashboard development
+- **DAX** — KPI and analytical measures
 
----
+## Skills Demonstrated
 
-## 💡 Recommendations
+- Data cleaning
+- Data transformation
+- Data modelling
+- Power Query
+- DAX
+- KPI development
+- Data visualisation
+- Dashboard design
+- Business analysis
+- Data storytelling
+- Insight generation
+- Business recommendations
 
-Based on the analysis, potential business actions include:
-
-* Monitor delivery performance regularly using defined KPIs.
-* Investigate categories or sellers associated with weaker delivery performance.
-* Monitor delivery timelines against expected delivery dates.
-* Use historical order data to identify operational patterns.
-* Continue tracking customer and shipping performance through interactive reporting.
-
----
-
-## 🛠️ Tools Used
-
-| Tool        | Purpose                              |
-| ----------- | ------------------------------------ |
-| Excel       | Initial data handling and analysis   |
-| Power Query | Data cleaning and transformation     |
-| Power BI    | Data modelling and visualisation     |
-| DAX         | Measures and analytical calculations |
-
----
-
-## 📌 Skills Demonstrated
-
-* Data cleaning
-* Data transformation
-* Data modelling
-* Power Query
-* DAX
-* KPI development
-* Data visualisation
-* Dashboard design
-* Business analysis
-* Data storytelling
-* Insight generation
-* Recommendation development
-
----
-
-## 📂 Project Structure
+## Repository Structure
 
 ```text
-├── Dataset
-├── Excel
-├── Power_Query
-├── PowerBI
-├── DAX
-├── Dashboard
-├── Documentation
+olist-ecommerce-customer-shipping-analysis/
+│
+├── Dataset/
+├── Excel/
+├── Power_Query/
+├── PowerBI/
+│   └── Olist_Dashboard.pbix
+├── DAX/
+├── Dashboard/
+│   └── final-dashboard.jpg
+├── Documentation/
 └── README.md
 ```
 
----
-
-## 👤 Author
+## Author
 
 **Babatunde Samuel**
 
 Junior Data Analyst
 
-Skills: Excel | Power Query | Power BI | DAX | SQL
-
----
+**Skills:** Excel | Power Query | Power BI | DAX | SQL
